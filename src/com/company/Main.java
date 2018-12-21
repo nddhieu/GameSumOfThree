@@ -18,11 +18,15 @@ import java.util.Scanner;
 
 public class Main {
 
+    private static final int NUMBEROFCARDINDECK = 52 ;
+    static final int NUMBEROFPLAYCARD = 3;
+
+
     public static void main(String[] args) {
         // write your code here
         int numberOfPlayer;
         String userName;
-        final int NUMBEROFPLAYCARD = 3;
+
         Scanner scanner = new Scanner(System.in);
         Player playerList = new Player();
 
@@ -101,12 +105,17 @@ public class Main {
             try {
                 String readInput = scanner.nextLine();
                 numberOfPlayer = Integer.parseInt(readInput);
+                if (numberOfPlayer > NUMBEROFCARDINDECK / NUMBEROFPLAYCARD ){
+                    System.out.println("there are too many player, don't have enough card in deck to play");
+                    validInput = false;
+                }
             } catch (Exception e) {
                 System.out.println("pleas input a valid number");
                 validInput = false;
             }
         }
-        while (!validInput && numberOfPlayer == 0);
+
+        while (!validInput || numberOfPlayer == 0);
         return numberOfPlayer;
     }
 

@@ -74,11 +74,16 @@ public class Deck {
     }
 
     public Card takeTopCardOutFromDeck(Deck deck) {
-        Card card = new Card(deck.Deck1.get(0).getCardNumber(), deck.Deck1.get(0).getType());
+        Card card = null;
+        try {
+            card = new Card(deck.Deck1.get(0).getCardNumber(), deck.Deck1.get(0).getType());
 //        System.out.println("top card of Deck before remove " + deck.readCard(getCard(deck,0)));
 
-        deck.Deck1.remove(0);
+            deck.Deck1.remove(0);
 //        System.out.println("top card of Deck after remove " + deck.readCard(getCard(deck,0)));
+        } catch (Exception e) {
+            System.out.println("no more card in Deck to take");
+        }
         return card;
     }
 
